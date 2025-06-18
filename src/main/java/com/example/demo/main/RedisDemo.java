@@ -11,20 +11,14 @@ public class RedisDemo {
     
     // Azure Managed Redis Configuration
     private static final int REDIS_PORT = 10000;
-    private static final String REDIS_HOST = "my-redis.koreacentral.redis.azure.net";
-    private static final String REDIS_PASSWORD = "PXT9kEV9llGFsTrns5M1MuIot9TFLkI1nAzCaBUatTQ=";
+    private static final String REDIS_HOST = "xxxx.koreacentral.redis.azure.net";
+    private static final String REDIS_PASSWORD = "<REDIS_PASSWORD>";
     private static final boolean USE_SSL = true; // SSL 사용 여부
 
     private static final int COUNT = 1000;
     private static final String KEY_PATTERN = "10"; //
 
     public static void main(String[] args) {
-        // Redis 연결 정보
-        // String host = System.getenv().getOrDefault("REDIS_HOST", "localhost");
-        // int port = Integer.parseInt(System.getenv().getOrDefault("REDIS_PORT", "6380"));
-        // String password = System.getenv().get("REDIS_PASSWORD");
-        // boolean useSsl = Boolean.parseBoolean(System.getenv().getOrDefault("REDIS_SSL", "true"));
-
         // Redis 작업 객체 생성
         RedisOperations redisOps = new RedisOperations(REDIS_HOST, REDIS_PORT, REDIS_PASSWORD, USE_SSL);
 
@@ -44,11 +38,6 @@ public class RedisDemo {
             // 3. SCAN을 사용한 키 조회
             System.out.println("\n3. Getting keys using SCAN command:");
             printResult(redisOps.scanKeys("key:*", COUNT));
-
-            // 4. 특정 키의 값 조회
-            // System.out.println("\n4. Getting value for specific key (key:42):");
-            // printResult(redisOps.getValue("key:42"));
-
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
